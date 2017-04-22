@@ -1,0 +1,22 @@
+{
+  "name": "meantutorial",
+  "version": "0.0.0",
+  "description": "meantutorial",
+  "main": "server.js",
+  "author": "Mimi",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "MEAN",
+    "stack"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.5",
+    "morgan": "^1.8.1"
+  }
+}
