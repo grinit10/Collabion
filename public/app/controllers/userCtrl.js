@@ -4,7 +4,7 @@ angular.module('UserController',['userServices'])
         ctrl.showLoading = false;
         this.regUser = function () {
             ctrl.showLoading = true;
-            User.create(this.regdata).then(
+            User.create(ctrl.regData).then(
                 function (obj) {
                     ctrl.showLoading = false;
                     ctrl.errorMessage = false;
