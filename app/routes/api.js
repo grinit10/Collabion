@@ -1,5 +1,7 @@
 var User = require('../models/User');
 var path = require("path");
+var jwt = require('jsonwebtoken');
+var secret = "Harry Potter";
 
 module.exports = function (router) {
 
@@ -19,5 +21,29 @@ module.exports = function (router) {
         }
     });
 
+    router.post("/authenticate", function (req, resp) {
+        if ((req.body.username == null) || (req.body.password == null))
+            resp.json({success:false,message:"Please give both of username and password"});
+        else
+        {
+            User.findOne({ username: req.body.username}).select('email username password').exec(function (err,user) {
+                if(err) throw  err;
+                else if(!user)
+                    resp.json({success:false,message:"Could not find the user!!"});
+                else if(user){
+                    var isValidCredential = user.comparePassword(req.body.password);
+                    if(!isValidCredential)
+                        resp.json({success:false,message:"Invalid credentials!!"});
+                    else
+                    {
+                        var token = jwt.sign({
+                            data: {username:user.username,email:user.email}
+                        }, secret, { expiresIn: '1h' });
+                        resp.json({success:true,message:"User authenticated!!",token:token});
+                    }
+                }
+            })
+        }
+    });
     return router;
 }

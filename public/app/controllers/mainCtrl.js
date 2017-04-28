@@ -1,5 +1,11 @@
 angular.module('MainController',['mainServices'])
     .controller('LoginCtrl',function ($http,$location,$timeout,Login) {
+
+            if(Login.isLoggedin())
+                console.log("User is logged in");
+            else
+                console.log("User is not logged in");
+
             var ctrl = this;
             ctrl.showLoading = false;
             this.authenticate = function () {
@@ -20,6 +26,14 @@ angular.module('MainController',['mainServices'])
                         }
                     }
                 )
+            }
+            
+            this.logout = function () {
+                Login.logout();
+                $location.path('/logout');
+                $timeout(function () {
+                    $location.path('/');
+                },2000);
             }
         }
     )
