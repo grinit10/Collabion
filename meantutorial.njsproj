@@ -32,11 +32,49 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app\routes\api.js" />
+    <Compile Include="public\app\app.js" />
+    <Compile Include="public\app\controllers\mainCtrl.js" />
+    <Compile Include="public\app\controllers\userCtrl.js" />
+    <Compile Include="public\app\routs.js" />
+    <Compile Include="public\app\Services\mainServices.js" />
+    <Compile Include="public\app\Services\UserServices.js" />
+    <Compile Include="public\assets\js\angular-animate.js" />
+    <Compile Include="public\assets\js\angular-animate.min.js" />
+    <Compile Include="public\assets\js\angular-route.js" />
+    <Compile Include="public\assets\js\angular-route.min.js" />
+    <Compile Include="public\assets\js\angular.js" />
+    <Compile Include="public\assets\js\angular.min.js" />
+    <Compile Include="public\assets\js\bootstrap.js" />
+    <Compile Include="public\assets\js\bootstrap.min.js" />
+    <Compile Include="public\assets\js\jquery-3.2.1.min.js" />
+    <Compile Include="public\assets\js\npm.js" />
     <Compile Include="server.js" />
     <Content Include="package.json" />
     <Content Include="public\app\views\Index.html">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\app\views\pages\about.html" />
+    <Content Include="public\app\views\pages\Home.html" />
+    <Content Include="public\app\views\pages\users\login.html" />
+    <Content Include="public\app\views\pages\users\Logout.html" />
+    <Content Include="public\app\views\pages\users\register.html" />
+    <Content Include="public\assets\css\animate.css" />
+    <Content Include="public\assets\css\bootstrap-theme.css" />
+    <Content Include="public\assets\css\bootstrap-theme.css.map" />
+    <Content Include="public\assets\css\bootstrap-theme.min.css" />
+    <Content Include="public\assets\css\bootstrap-theme.min.css.map" />
+    <Content Include="public\assets\css\bootstrap.css" />
+    <Content Include="public\assets\css\bootstrap.css.map" />
+    <Content Include="public\assets\css\bootstrap.min.css" />
+    <Content Include="public\assets\css\bootstrap.min.css.map" />
+    <Content Include="public\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="public\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="public\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="public\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="public\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="public\assets\js\angular-animate.min.js.map" />
+    <Content Include="public\assets\js\angular-route.min.js.map" />
+    <Content Include="public\assets\js\angular.min.js.map" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +83,15 @@
     <Folder Include="app\routes\" />
     <Folder Include="public\" />
     <Folder Include="public\app\" />
+    <Folder Include="public\app\controllers\" />
+    <Folder Include="public\app\Services\" />
     <Folder Include="public\app\views\" />
+    <Folder Include="public\app\views\pages\" />
+    <Folder Include="public\app\views\pages\users\" />
+    <Folder Include="public\assets\" />
+    <Folder Include="public\assets\css\" />
+    <Folder Include="public\assets\fonts\" />
+    <Folder Include="public\assets\js\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
