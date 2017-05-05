@@ -5,25 +5,8 @@ var secret = "Harry Potter";
 
 module.exports = function (router) {
 
-<<<<<<< HEAD
 
 
-=======
-    router.use(function (req, resp, next) {
-        var token = req.body.token || req.body.query || req.headers["x-access-token"];
-        if (token){
-            var decodedtoken = jwt.verify(token, secret, function (err, decoded) {
-                if (err) resp.json({ success: false, message: "Token expired!!" });
-                else {
-                    req.decoded = decoded;
-                    next();
-                }
-            });
-        }
-        else
-            resp.json({ success: false, message: "Token not found!!" });
-    });
->>>>>>> 36f7752f5cd195d3def50835d54acbd029bc898b
     //localhost:8080/api/addUser
     router.post("/addUser", function (req, resp) {
         if ((req.body.username == null) || (req.body.password == null) || (req.body.email == null))
@@ -66,7 +49,6 @@ module.exports = function (router) {
         }
     });
 
-<<<<<<< HEAD
 
     router.use(function (req,resp,next) {
         var token = req.body.token || req.body.query || req.headers["x-access-token"];
@@ -89,10 +71,5 @@ module.exports = function (router) {
     router.get("/me",function (req,resp) {
         resp.send(req.decoded);
     })
-=======
-    router.get("/GetUserDtl", function (req, resp) {
-        resp.send(re.decoded);
-    });
->>>>>>> 36f7752f5cd195d3def50835d54acbd029bc898b
     return router;
 }
