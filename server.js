@@ -1,12 +1,17 @@
 'use strict';
 var express = require('express');
+//Morgan package for running server.js
 var morgan = require('morgan');
+//Mongoose to connect to mongodb
 var mongoose = require('mongoose');
 var http = require('http');
+//Bodyparser to pase json data from request body
 var bodyparser = require('body-parser');
 var app = express();
 var port = process.env.PORT || 8080;
+//Setting up the router for api
 var router = express.Router();
+//Binding the route object to api js
 var appRoutes = require('./app/routes/api')(router);
 var path = require("path");
 
