@@ -16,6 +16,13 @@ angular.module("mainServices",[])
                 return false;
         }
 
+        loginFactory.GetUser = function () {
+            if(AuthToken.getToken())
+                return $http.get('/api/me');
+            else
+                return $q.reject({"message":"User has no token!!"});
+        }
+
         loginFactory.logout = function () {
             AuthToken.setToken();
         }
@@ -36,4 +43,15 @@ angular.module("mainServices",[])
             return $window.localStorage.getItem('token');
         }
         return AuthTokenFactory;
+    })
+
+    .factory("authInterceptors",function (AuthToken) {
+        var authInterceptorFactory = {};
+
+        authInterceptorFactory.request = function (config) {
+            var token = AuthToken.getToken();
+            if(token) config.headers["x-access-token"] = token;
+            return  config;
+        }
+        return authInterceptorFactory;
     })

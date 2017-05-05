@@ -5,6 +5,8 @@ var secret = "Harry Potter";
 
 module.exports = function (router) {
 
+
+
     //localhost:8080/api/addUser
     router.post("/addUser", function (req, resp) {
         if ((req.body.username == null) || (req.body.password == null) || (req.body.email == null))
@@ -20,6 +22,7 @@ module.exports = function (router) {
             });
         }
     });
+
 
     router.post("/authenticate", function (req, resp) {
         if ((req.body.username == null) || (req.body.password == null))
@@ -45,5 +48,28 @@ module.exports = function (router) {
             })
         }
     });
+
+
+    router.use(function (req,resp,next) {
+        var token = req.body.token || req.body.query || req.headers["x-access-token"];
+        //console.log(token);
+        if(token)
+            jwt.verify(token,secret,function (err,decoded) {
+                if(err){
+                    //console.log(err);
+                    resp.json({success:false,message:"Inavlid token!!"});
+                }
+                else{
+                    req.decoded = decoded;
+                    next();
+                }
+            });
+        else
+            resp.json({success:false,message:"Token not found!!"});
+    })
+
+    router.get("/me",function (req,resp) {
+        resp.send(req.decoded);
+    })
     return router;
 }
