@@ -2,18 +2,22 @@ angular.module('MainController',['mainServices'])
     .controller('LoginCtrl',function ($http,$location,$timeout,Login,$rootScope) {
             var ctrl = this;
             ctrl.showLoading = false;
+            ctrl.loadMe = false;
 
             $rootScope.$on("$routeChangeStart",function () {
-                if(Login.isLoggedin())
+                if(Login.isLoggedin()){
+                    ctrl.isLoggedin = true;
                     Login.GetUser().then(function(data){
                         ctrl.username = data.data.data.username;
                         ctrl.email = data.data.data.email;
                     })
+                }
                 else{
                     ctrl.username = "";
                     console.log("User is not logged in");
+                    ctrl.isLoggedin = false;
                 }
-
+                ctrl.loadMe = true;
             });
 
             this.authenticate = function () {
