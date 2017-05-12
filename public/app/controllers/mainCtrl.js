@@ -8,8 +8,8 @@ angular.module('MainController',['mainServices'])
                 if(Login.isLoggedin()){
                     ctrl.isLoggedin = true;
                     Login.GetUser().then(function(data){
-                        ctrl.username = data.data.data.username;
-                        ctrl.email = data.data.data.email;
+                        ctrl.username = data.data.username;
+                        ctrl.email = data.data.email;
                     })
                 }
                 else{
