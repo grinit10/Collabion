@@ -1,5 +1,5 @@
 var User = require('../models/User');
-var path = require("path");
+//var path = require("path");
 var jwt = require('jsonwebtoken');
 var secret = "Harry Potter";
 

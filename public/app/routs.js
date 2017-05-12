@@ -1,4 +1,4 @@
-angular.module('appRouts',['ngRoute'])
+var app = angular.module('appRouts',['ngRoute'])
 
     .config(function ($routeProvider,$locationProvider) {
         $routeProvider
@@ -11,18 +11,22 @@ angular.module('appRouts',['ngRoute'])
             .when('/register',{
                 templateUrl: "app/views/pages/users/register.html",
                 controller:  "RegistrationCtrl",
-                controllerAs: "Register"
+                controllerAs: "Register",
+                authenticated: false
             })
             .when('/login',{
                 templateUrl: "app/views/pages/users/login.html",
                 controller:  "LoginCtrl",
-                controllerAs: "Login"
+                controllerAs: "Login",
+                authenticated: false
             })
             .when('/logout',{
-                templateUrl: "app/views/pages/users/logout.html"
+                templateUrl: "app/views/pages/users/logout.html",
+                authenticated: true
             })
             .when('/profile',{
-            templateUrl: "app/views/pages/users/profile.html"
+            templateUrl: "app/views/pages/users/profile.html",
+                authenticated: true
             })
             .otherwise({redirectTo:'/'});
 
@@ -31,3 +35,9 @@ angular.module('appRouts',['ngRoute'])
             requireBase: false
         });
     });
+
+app.run(['$rootScope',function ($rootScope) {
+    $rootScope.$on("$routeChangeStart",function (event,next,current) {
+       console.log(next.$$route);
+    });
+}])

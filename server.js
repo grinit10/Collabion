@@ -8,7 +8,7 @@ var http = require('http');
 //Bodyparser to pase json data from request body
 var bodyparser = require('body-parser');
 var app = express();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8090;
 //Setting up the router for api
 var router = express.Router();
 //Binding the route object to api js
@@ -17,7 +17,7 @@ var path = require("path");
 
 app.use(morgan("dev"));
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({exterded:true}));
+app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/public'));
 app.use("/api", appRoutes);
 
